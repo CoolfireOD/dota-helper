@@ -1,5 +1,5 @@
 .content-container {
-    max-width: 1140px; 
+    max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -21,7 +21,6 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: rgb(25, 32, 35);
-    background-image: linear-gradient(to right, rgb(26, 43, 62), rgb(20, 30, 48));
 }
 
 ._text-muted {
@@ -55,12 +54,12 @@ body {
     box-shadow: rgb(0 0 0 / 23%) 2px 2px 3px -2px;
 }
 
-.navbar_bg-dark {
-    background-color: #16405A;
-}
-
 .navbar__toggler {
     display: none;
+}
+
+.navbar_bg-dark {
+    background-color: #16405A;
 }
 
 .navbar__logo {
@@ -207,10 +206,21 @@ body {
     padding-top: 0.5rem;
 }
 
+.responsive-table-container {
+    min-width: 320px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 .matches-table {
     width: 100%;
     padding: 1rem;
     border-collapse: collapse;
+}
+
+.matches-table__tr-start {
+    display: none;
+    border-bottom: 2px solid white;
 }
 
 .matches-table thead {
@@ -221,10 +231,13 @@ body {
     padding-bottom: 0.5rem;
 }
 
+.match-info {
+    border-bottom: 1px dotted white;
+}
+
 .matches-table__td {
     padding: 0.5rem;
     text-align: center;
-    border-bottom: 1px dotted white;
 }
 
 .team {
@@ -242,7 +255,6 @@ body {
     filter: drop-shadow(rgb(255, 255, 255) 1px 0 0px) drop-shadow(rgb(255, 255, 255) -1px 0 0px) drop-shadow(rgb(255, 255, 255) 0 1px 0px) drop-shadow(rgb(255, 255, 255) 0 -1px 0px);
 }
 
-
 .matches-table__tr-end {
     border-bottom: 2px solid white;
 }
@@ -254,18 +266,26 @@ body {
     border-collapse: collapse;
 }
 
+.heroes-table__tr-start {
+    display: none;
+    border-bottom: 2px solid white;
+}
+
 .heroes-table thead {
     border-bottom: 2px solid white;
-} 
+}
 
-.heroes-table th {
+.heroes-table__th {
     padding-bottom: 0.5rem;
 }
 
-.heroes-table td {
+.heroes-info {
+    border-bottom: 1px dotted white;
+}
+
+.heroes-table__td {
     padding: 0.5rem;
     text-align: center;
-    border-bottom: 1px dotted white;
 }
 
 .heroes-table__tr-end {
@@ -279,9 +299,22 @@ body {
     padding-top: 1.5rem;
 }
 
+.footer .content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer .content-container hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.87), rgba(0, 0, 0, 0));
+}
+
 .footer__contact {
     display: flex;
-    justify-content: left;
+    justify-content: space-around;
     align-items: center;
     padding-bottom: 0.5rem;
 }
@@ -295,7 +328,7 @@ body {
 }
 
 .footer__about {
-    padding-left: 3rem;
+    text-align: center;
 }
 
 .footer__pages {
@@ -310,19 +343,27 @@ body {
 
 .footer__pages .divider {
     opacity: 0.6;
-    
+
+}
+
+@media (max-width: 918px) {
+
+    .match-info__start,
+    .match-info__abilities {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
     body {
         display: grid;
         grid-template-areas:
-            "navbar profile"
-            "navbar main"
-            "navbar main"
-            "navbar footer";
-        grid-template-rows: 3fr 3fr 3fr 1fr;
-        grid-template-columns: 70px 1fr;
+            "navbar"
+            "profile"
+            "main"
+            "footer";
+        grid-template-rows: 56px 490px 1fr 130px;
+        grid-template-columns: 1fr;
         min-height: 100vh;
         margin: 0;
     }
@@ -332,15 +373,176 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: left;
+        padding: 0;
         padding-top: 1rem;
-    }
-
-    .navbar__toggler {
-        display: block;
     }
 
     .navbar__link,
     .navbar__logo {
+        display: none;
+    }
+
+    .profile-info {
+        flex-direction: column;
+        padding-top: 2rem;
+        justify-content: center;
+    }
+
+    .profile-buttons {
+        justify-content: center;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .stats:first-child {
+        padding-right: 100px;
+    }
+
+    .stats__container {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .stats .loses {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .profile-info__rank {
+        padding-bottom: 1rem;
+    }
+
+    .matches-table__tr-start {
+        display: table-row;
+    }
+
+    .matches-table thead {
+        display: none;
+    }
+
+    .match-info {
+        display: block;
+        border-bottom: 2px solid white;
+    }
+    
+    .match-info:last-child {
+        border: 0;
+    }
+
+    .matches-table__td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        border-bottom: 1px dotted white;
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+
+    .matches-table__td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    .matches-table__td:last-child {
+        border:0;
+    }
+    
+    .draft {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .match-info__abilities, .match-info__start {
+        display: none;
+    }
+
+    .heroes-table__tr-start {
+        display: table-row;
+    }
+
+    .heroes-table thead {
+        display: none;
+    }
+
+    .heroes-info {
+        display: block;
+        border-bottom: 2px solid white;
+    }
+    
+    .heroes-info:last-child {
+        border: 0;
+    }
+
+    .heroes-table__td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        border-bottom: 1px dotted white;
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+
+    .heroes-table__td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 20px;
+    }
+
+    .heroes-table__td:last-child {
+        border:0;
+    }
+
+    .heroes-info__winstreak,
+    .heroes-info__gpm,
+    .heroes-info__xpm {
+        display: none;
+    }
+
+    .footer__contact {
+        justify-content: center;
+    }
+
+    .footer__about {
+        padding: 0;
+        text-align: center;
+    }
+}
+
+@media (max-width: 610px) {
+    body {
+        display: grid;
+        grid-template-areas:
+            "navbar"
+            "profile"
+            "main"
+            "footer";
+        grid-template-rows: 56px 490px 1fr 250px;
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .footer__contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .footer__contact span {
+        padding: 0;
+    }
+
+    .footer__pages {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer__pages .divider {
         display: none;
     }
 }
